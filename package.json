@@ -1,20 +1,23 @@
 {
-  "name": "controljs",
-  "description": "JavaScript control base class for both server and client side GUI development. Control is the opposite of templating.",
+  "name": "frameworkjs",
+  "description": "Javascript application framework based on control (https://github.com/ewoudj/control).",
   "version": "0.0.1",
   "author": "Ewoud van den Boom <ewoudj@gmail.com>",
   "contributors": [ 
     { "name": "Ewoud van den Boom", "email": "ewoudj@gmail.com" }
   ],
-  "keywords": ["GUI", "HTML", "javascript", "rest", "ajax"],
+  "keywords": ["Application", "Framework", "javascript", "rest", "ajax"],
   "repository" : { 
     "type" : "git"
-  , "url" : "git://github.com/ewoudj/control.git"
+  , "url" : "git://github.com/ewoudj/framework.git"
   },
-  "main": "lib/control.js",
-  "engines": { "node": ">= 0.4.1" }, 
+  "main": "index.js.js",
+  "engines": { "node": ">= 0.4.1" },
+  "dependencies": {
+    "controljs": "*"
+  },
   "licenses" : [ { "type" : "MIT"
-    , "url" : "http://github.com/ewoudj/control/raw/master/LICENSE"
+    , "url" : "http://github.com/ewoudj/framework/raw/master/LICENSE"
     }
   ]
 }

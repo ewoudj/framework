@@ -1,5 +1,5 @@
-var control = require('./control').control;
-var merge = require('./control').utils.merge;
+var control = require('controljs').control;
+var merge = require('controljs').utils.merge;
 
 var page = function(config){
 	merge( this, config || {});
