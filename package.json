@@ -1,7 +1,7 @@
 {
   "name": "frameworkjs",
   "description": "Javascript application framework based on control (https://github.com/ewoudj/control).",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Ewoud van den Boom <ewoudj@gmail.com>",
   "contributors": [ 
     { "name": "Ewoud van den Boom", "email": "ewoudj@gmail.com" }
@@ -12,7 +12,7 @@
   , "url" : "git://github.com/ewoudj/framework.git"
   },
   "main": "index.js.js",
-  "engines": { "node": ">= 0.4.1" },
+  "engines": { "node": ">= 0.5.0" },
   "dependencies": {
     "async": "*",
     "mongodb": "*",
