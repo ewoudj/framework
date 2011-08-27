@@ -1,3 +1,7 @@
+/*
+ * Usage: run with node.js
+ * Demonstrates: Returns simple 'Hello world' web page to client. 
+ */
 var http = require('http');
 var control = require('./../controls/page').page;
 

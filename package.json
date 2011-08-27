@@ -14,7 +14,12 @@
   "main": "index.js.js",
   "engines": { "node": ">= 0.4.1" },
   "dependencies": {
-    "controljs": "*"
+    "async": "*",
+    "mongodb": "*",
+    "connect": "*",
+    "connect-form": "*",
+    "browserify": "*",
+    "optimist": "*"
   },
   "licenses" : [ { "type" : "MIT"
     , "url" : "http://github.com/ewoudj/framework/raw/master/LICENSE"
