@@ -12,7 +12,7 @@
   , "url" : "git://github.com/ewoudj/framework.git"
   },
   "main": "index.js.js",
-  "engines": { "node": ">= 0.5.0" },
+  "engines": { "node": ">= 0.4.1" },
   "dependencies": {
     "async": "*",
     "mongodb": "*",

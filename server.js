@@ -8,7 +8,6 @@ if(argv.app){
 	application.current = require(argv.app).application;
 }
 
-debugger;
 var middleware = {
 	/*
 	 * Waits for upload of form to finish than continues
