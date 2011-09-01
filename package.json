@@ -1,7 +1,7 @@
 {
   "name": "frameworkjs",
   "description": "Javascript application framework based on control (https://github.com/ewoudj/control).",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Ewoud van den Boom <ewoudj@gmail.com>",
   "contributors": [ 
     { "name": "Ewoud van den Boom", "email": "ewoudj@gmail.com" }
