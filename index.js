@@ -16,9 +16,7 @@ exports.memoControl = require('./public/controls/formmemocontrol').control;
 exports.referenceControl = require('./public/controls/formreferencecontrol').control;
 exports.referenceListControl = require('./public/controls/formreferencelistcontrol').control;
 exports.radioControl = require('./public/controls/formradiocontrol').control;
-
-
-exports.application = require('./application').application;
+exports.application = require('./public/controls/application').application;
 
 exports.models = {
 	user: require('./public/models/user.js')

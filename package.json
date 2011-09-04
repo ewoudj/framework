@@ -18,8 +18,7 @@
     "mongodb": "*",
     "connect": "*",
     "connect-form": "*",
-    "browserify": "*",
-    "optimist": "*"
+    "browserify": "*"
   },
   "licenses" : [ { "type" : "MIT"
     , "url" : "http://github.com/ewoudj/framework/raw/master/LICENSE"

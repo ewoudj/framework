@@ -1,8 +1,8 @@
-var merge = require('./public/controls/control').utils.merge;
-var control = require('./public/controls/control').control;
-var page = require('./public/controls/page').page;
-var model = require('./public/data/model');
-var store = require('./public/data/store').store;
+var merge = require('./control').utils.merge;
+var control = require('./control').control;
+var page = require('./page').page;
+var model = require('./../data/model');
+var store = require('./../data/store').store;
 /*
  * The application class is used to start
  * 
