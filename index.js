@@ -17,6 +17,7 @@ exports.referenceControl = require('./public/controls/formreferencecontrol').con
 exports.referenceListControl = require('./public/controls/formreferencelistcontrol').control;
 exports.radioControl = require('./public/controls/formradiocontrol').control;
 exports.application = require('./public/controls/application').application;
+exports.httpserver = require('./private/server/http');
 
 exports.models = {
 	user: require('./public/models/user.js')
