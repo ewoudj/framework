@@ -59,6 +59,7 @@ var topbar = function(config){
 			attributes:{
 				cls: 'button'
 			},
+			model: this.model,
 			events: {
 				onclick: function(ctl, evt){
 					window.location.href = rest.toUrl({

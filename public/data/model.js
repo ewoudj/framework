@@ -53,7 +53,8 @@ model.prototype.getViewConfig = function(instance, mode, field, session){
 		result.controlType = formRegistry[mode][viewType].name;
 	}
 	else {
-		debugger;
+		console.log('mode: ' + mode);
+		console.log('viewType: ' + viewType);
 		throw 'Error: requested form mode / type combination is not registered';
 	}
 	return result;

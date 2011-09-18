@@ -86,7 +86,7 @@ var application = function(config, session, clientData){
 	var currentModel = null;
 	for(var s in registry){
 		var registeredModel = registry[s];
-		if(!currentModel || (config.query && config.query.model === registeredModel.name)){
+		if(!currentModel || (config.model && config.model === registeredModel.name)){
 			currentModel = registeredModel;
 		}
 		if(registeredModel.navigatable && registeredModel.canUserNavigate(session.user)){
