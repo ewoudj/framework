@@ -8,6 +8,9 @@ var userModel = new model({
 	friendlyName: 'user',
 	titleField: 'userName',
 	submitTitle: 'Submit',
+	navigationTitle: 'Users',
+	navigatable: true,
+	canUserNavigate: function(){return true;},
 	permissions: {
 		createRoles: ['?'], 					// Everybody can create an account
 		readRoles: ['?'],

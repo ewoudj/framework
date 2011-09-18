@@ -1,6 +1,11 @@
+var merge = require('./../../public/controls/control').utils.merge;
 var application = require('./../../public/controls/application').application;
+var model = require('./../../public/data/model');
+var store = require('./../../public/data/store').store;
+var user = require('./../../public/models/user');
 
-exports = module.exports = {
+var middleware = exports = module.exports = {
+	config: {},
 	/*
 	 * Waits for upload of form to finish than continues
 	 */
@@ -90,7 +95,7 @@ exports = module.exports = {
 	 */
 	handleFormPost: function(req, res, next){
 		if(req.method === 'POST'){
-			model.registry[data._type].set({value: data, session: session}, function(err, setResult){
+			model.registry[req.body._type].set({value: req.body, session: req.session}, function(err, setResult){
 				if(setResult && setResult.issues){
 					req.query = setResult;
 				}
@@ -122,12 +127,27 @@ exports = module.exports = {
 		var app = new application(req.query, req.session);
 		var applicationClass = "/index.js";
 		app.ready(function() {
+			req.query.models = middleware.config.models;
 			var clientConfig = JSON.stringify(req.query);
 			var clientData = JSON.stringify(app.store.clientCache);
 			var sessionData = JSON.stringify({user: req.session ? req.session.user : null});
-			var script = "function boot(){\nvar app = new (require('" + applicationClass + "').application)(";
-			script = script + clientConfig + ", " + sessionData + " ," + clientData + ");\napp.bind(document.childNodes[0]);\n}";
-			app.head.bootScript.controlValue = script;
+			var s =     "function boot(){\n";
+			var s = s + "    var framework = require('/index.js');\n";
+			var s = s + "    require.modules['frameworkjs'] = function(){ return framework; }\n";
+			var s = s + "    var app = framework.application;\n";
+			var s = s + "    var config = " + clientConfig + ";\n";
+			var s = s + "    if(config.models){\n";
+			var s = s + "        for(var i = 0; i < config.models.length; i++){\n";
+			var s = s + "            var m = config.models[i];\n";
+			var s = s + "            m = m.substring(m.lastIndexOf('/'));\n";
+			var s = s + "            require(m);\n";
+			var s = s + "        }\n";
+			var s = s + "    }\n";
+			var s = s + "    ";
+			var s = s + "    var application = new app( config, " + sessionData + " ," + clientData + ");\n";
+			var s = s + "    application.bind(document.childNodes[0]);\n";
+			var s = s + "}";
+			app.head.bootScript.controlValue = s;
 			var html = app.render();
 			res.writeHead(200, {
 				'Content-Length': html.length,

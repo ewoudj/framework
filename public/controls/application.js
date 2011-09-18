@@ -3,6 +3,9 @@ var control = require('./control').control;
 var page = require('./page').page;
 var model = require('./../data/model');
 var store = require('./../data/store').store;
+var registry = model.registry;
+var rest = require('./../net/rest').utils;
+var user = require('./../models/user');
 /*
  * The application class is used to start
  * 
@@ -30,7 +33,7 @@ var application = function(config, session, clientData){
 		viewItem = {
 			controlType: 'list',
 			name: 'searchList',
-			query: {_type:'user'},
+			query: {_type: config.model || 'user'},
 			setSearch: function(query){
 				alert(query);
 			}
@@ -79,6 +82,33 @@ var application = function(config, session, clientData){
 	 * If we have a valid viewItem, make sure we construct it now to trigger any async
 	 * loading that calls busy() and done()
 	 */
+	var navigationItems = [];
+	var currentModel = null;
+	for(var s in registry){
+		var registeredModel = registry[s];
+		if(!currentModel || (config.query && config.query.model === registeredModel.name)){
+			currentModel = registeredModel;
+		}
+		if(registeredModel.navigatable && registeredModel.canUserNavigate(session.user)){
+			navigationItems.push({
+				tag:'a',
+				controlValue: registeredModel.navigationTitle || registeredModel.friendlyName,
+				attributes: {
+					cls: 'sidepanelbutton',
+					href: rest.toUrl({
+						view: 'search',
+						model: registeredModel.name,
+						query: ""
+					})
+				}
+			});
+		}
+	};
+	navigationItems.push({
+		tag: 'footer',
+		name: 'mainfooter',
+		controlValue: config.copyright || '2011(c) All rights reserved'
+	});
 	page.call(this, {
 		title: config.title || 'Default title',
 		store: new store({clientCache: clientData}),
@@ -90,7 +120,8 @@ var application = function(config, session, clientData){
 			controlType: 'topbar',
 			name: 'topbar',
 			user: session ? session.user : null,
-			title: application.config.title
+			title: application.config.title,
+			model: currentModel
 		},{ 
 			name: 'navigationcontrol',
 			attributes: {
@@ -99,17 +130,7 @@ var application = function(config, session, clientData){
 			items: [ {
 				tag: 'nav',
 				name: 'sidepanel',
-				items:[{
-						tag:'a',
-						controlValue: 'Users',
-						attributes: {
-							cls: 'sidepanelbutton'
-						}
-					},{
-					tag: 'footer',
-					name: 'mainfooter',
-					controlValue: config.copyright || '2011(c) All rights reserved'
-				}]
+				items:navigationItems
 			}, {
 				tag: 'section',
 				name: 'viewStack',

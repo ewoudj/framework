@@ -48,10 +48,14 @@ var topbar = function(config){
 					}); // "index.html?view=search&query=" + this.parentControl.searchInput.element.value ;
 				}
 			}
-		},{
+		}]
+	});
+	merge(this, config);
+	if(this.model){
+		this.items.push({
 			tag: 'a',
 			name: 'createTopicButton',
-			controlValue: 'Create Topic',
+			controlValue: 'Create ' + this.model.name,
 			attributes:{
 				cls: 'button'
 			},
@@ -60,13 +64,12 @@ var topbar = function(config){
 					window.location.href = rest.toUrl({
 						view: 'form',
 						mode: 'edit',
-						model: 'topic'
+						model: this.model.name
 					}); // "index.html?view=form&mode=new&model=topic";
 				}
 			}
-		}]
-	});
-	merge(this, config);
+		});
+	}
 	control.call(this);
 };
 
