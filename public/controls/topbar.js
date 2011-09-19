@@ -4,6 +4,8 @@ var form = require('./form').form;
 var rest = require('./../net/rest').utils;
 
 var topbar = function(config){
+	config = config || {};
+	var currentModelName = config.model ? config.model.name : '';
 	merge(this,{
 		tag: 'header',
 		items: [{
@@ -30,7 +32,7 @@ var topbar = function(config){
 			tag: 'input',
 			name: 'searchInput',
 			attributes: {					
-				placeholder: 'Find a topic...',
+				placeholder: currentModelName ? 'Find a ' + currentModelName + '...' : 'Search...',
 				cls: 'searchInput'
 			}
 		},{

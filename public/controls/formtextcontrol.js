@@ -6,11 +6,12 @@ var form = require('./form').form;
  * Text control
  */
 var textControl = function(config){
+	config = config || {};
 	this.parentControl = config.parentControl;
 	if(config.mode === 'view'){
 		merge( this, {
 			controlValue: config.value || '',
-			attributes: {
+			attributes: config.attributes || {
 				"class": 'valueview'
 			}
 		});;
@@ -36,6 +37,7 @@ control.registry['textControl'] = textControl;
 form.registerControl('view', 'text', textControl, 'textControl');
 form.registerControl('edit', 'text', textControl, 'textControl');
 form.registerControl('summary', 'text', textControl, 'textControl');
+form.registerControl('summary', 'title', textControl, 'textControl');
 
 form.registerControl('view', 'hidden', textControl, 'textControl');
 form.registerControl('edit', 'hidden', textControl, 'textControl');

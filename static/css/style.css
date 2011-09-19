@@ -132,6 +132,9 @@ nav{
 
 .sidepanelbutton:first-child{
 	border-radius: 8px 0px 0px 0px;
+}
+
+.sidepanelbutton.selected{
 	color: #00F;
 	background: -moz-linear-gradient(
 		top,

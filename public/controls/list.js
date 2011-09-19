@@ -124,12 +124,12 @@ var listItem = function(config){
 				"class": view[s].role || ''
 			}});
 			this.items.push(controlConfig);
-			this.items.push({
-				controlValue: itemModel.getValue(this.itemData, s, this.session),
-				attributes: {
-					"class": view[s].role || ''
-				}
-			});
+//			this.items.push({
+//				controlValue: itemModel.getValue(this.itemData, s, this.session),
+//				attributes: {
+//					"class": view[s].role || ''
+//				}
+//			});
 		//}
 	}
 	control.call(this);

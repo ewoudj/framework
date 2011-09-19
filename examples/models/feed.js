@@ -25,7 +25,13 @@ var feedModel = new model({
 			type: 'string',
 			view: {
 				title: 'Title',
-				required: true
+				required: true,
+    			special: {
+	        		summary: {
+	        			type: 'text',
+	        			role: 'title'
+	        		}
+        		}
 			}
 		},
 		description:{
@@ -49,7 +55,13 @@ var feedModel = new model({
 			type: 'string',
 			view: {
 				title: 'URL',
-				required: false
+				required: true,
+    			special: {
+	        		summary: {
+	        			type: 'text',
+	        			role: 'summary'
+	        		}
+        		}
 			}
 		}
 	},

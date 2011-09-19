@@ -89,12 +89,15 @@ var application = function(config, session, clientData){
 		if(!currentModel || (config.model && config.model === registeredModel.name)){
 			currentModel = registeredModel;
 		}
+	}
+	for(var s in registry){
+		var registeredModel = registry[s];		
 		if(registeredModel.navigatable && registeredModel.canUserNavigate(session.user)){
 			navigationItems.push({
 				tag:'a',
 				controlValue: registeredModel.navigationTitle || registeredModel.friendlyName,
 				attributes: {
-					cls: 'sidepanelbutton',
+					cls: (registeredModel === currentModel) ? 'sidepanelbutton selected' : 'sidepanelbutton',
 					href: rest.toUrl({
 						view: 'search',
 						model: registeredModel.name,
