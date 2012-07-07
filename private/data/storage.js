@@ -122,7 +122,7 @@ storage.prototype.deleteById = function(id, callback) {
 };
 
 storage.prototype.pathExists = function(p, callback) {
-	path.exists(p, function(exists) {
+	fs.exists(p, function(exists) {
 		callback(null, exists);
 	});
 };
